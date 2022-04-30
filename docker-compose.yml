@@ -2,7 +2,7 @@ version: '3.5'
 services:
 
   akaunting:
-    image: <your_image_tag_here>
+    image: akaunting:latest
     ports:
       - 8002:80
       - 8003:443
@@ -12,9 +12,22 @@ services:
       - akauntingapache:/etc/apache2/sites-available
       - akauntingle:/etc/letsencrypt
       - akauntinglelib:/var/lib/letsencrypt
+  db:
+    image: mysql:latest 
+    ports:
+      - 3306:3306
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=passw0rd
 
 volumes:
     akauntingdata:
     akauntingapache:
     akauntingle:
     akauntinglelib:
+    db:
+

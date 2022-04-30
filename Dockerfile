@@ -1,4 +1,4 @@
-FROM ubuntu:eoan-20200114
+FROM ubuntu:bionic
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -11,27 +11,30 @@ RUN \
  apt update && \
  apt install -y \
     apache2 \
-    php7.2 \
-    libapache2-mod-php7.2 \
-    php7.2-common \
-    php7.2-imap \
-    php7.2-mbstring \
-    php7.2-xmlrpc \
-    php7.2-soap \
-    php7.2-gd \
-    php7.2-xml \
-    php7.2-intl \
-    php7.2-mysql \
-    php7.2-cli \
-    php7.2-ldap \
-    php7.2-zip \
-    php7.2-curl \
+    php8.1 \
+    libapache2-mod-php8.1 \
+    php8.1-common \
+    php8.1-imap \
+    php8.1-mbstring \
+    php8.1-xmlrpc \
+    php8.1-soap \
+    php8.1-gd \
+    php8.1-xml \
+    php8.1-intl \
+    php8.1-mysql \
+    php8.1-cli \
+    php8.1-ldap \
+    php8.1-zip \
+    php8.1-curl \
+    php8.1-bcmath \
     unzip \
     curl \
     certbot \
-    python-certbot-apache
+    python-certbot-apache \
+    net-tools \
+    vim
 
-COPY php.ini /etc/php/7.2/apache2/php.ini
+COPY php.ini /etc/php/8.1/apache2/php.ini
 
 RUN \
  echo "**** install akaunting ****" && \
